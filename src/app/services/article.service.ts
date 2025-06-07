@@ -25,4 +25,23 @@ export class ArticleService {
   searchArticles(query: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/articles/search?q=${query}`);
   }
+
+  // Get paginated articles by section with sorting
+  getArticlesBySection(
+    sectionId: string, 
+    page: number = 0, 
+    size: number = 10,
+    sortBy: string = 'date',
+    direction: 'asc' | 'desc' = 'desc'
+  ): Observable<any> {
+    return this.http.get(
+      `${this.apiUrl}/articles/section/${sectionId}/page?page=${page}&size=${size}&sort=${sortBy},${direction}`
+    );
+  }
+
+  // Get articles by section, newest first
+  getArticlesBySectionNewestFirst(sectionId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/articles/section/${sectionId}/newest`);
+  }
+
 }

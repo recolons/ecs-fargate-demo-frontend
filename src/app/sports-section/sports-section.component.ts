@@ -24,9 +24,11 @@ export class SportsSectionComponent implements OnInit {
 
   loadSportsArticles(): void {
     this.loading = true;
-    this.articleService.getArticles().subscribe({
+    // sectionId is the id of the section in the database
+    const sectionId = '1'; 
+    this.articleService.getArticlesBySection(sectionId).subscribe({
       next: (data) => {
-        this.articles = data.filter((article: Article) => article.section === 'Deportes');
+        this.articles = data.content;
         this.loading = false;
       },
       error: (error) => {

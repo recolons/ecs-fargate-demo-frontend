@@ -15,7 +15,7 @@
         <h3>{{ article.title }}</h3>
         <p class="article-date">{{ article.date | date:'mediumDate' }}</p>
         <p class="article-excerpt">{{ article.content | slice:0:150 }}...</p>
-        <a [routerLink]="['/article', article.id]" class="read-more">Leer más</a>
+        <a [routerLink]="['/articulo', article.id]" class="read-more">Leer más</a>
       </div>
     </div>
   </div>
