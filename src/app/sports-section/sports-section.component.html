@@ -1,1 +1,26 @@
-<p>sports-section works!</p>
+<div class="sports-section">
+  <h2>Deportes</h2>
+  
+  <div *ngIf="loading" class="loading">
+    <p>Cargando artículos...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="!loading && !error" class="articles-grid">
+    <div *ngFor="let article of articles" class="article-card">
+      <div class="article-content">
+        <h3>{{ article.title }}</h3>
+        <p class="article-date">{{ article.date | date:'mediumDate' }}</p>
+        <p class="article-excerpt">{{ article.content | slice:0:150 }}...</p>
+        <a [routerLink]="['/article', article.id]" class="read-more">Leer más</a>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !error && articles.length === 0" class="no-articles">
+    <p>No hay artículos disponibles en la sección de deportes.</p>
+  </div>
+</div>

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ArticleService {
   // Replace this with your actual ECS Fargate backend URL
-  private apiUrl = 'http://your-ecs-fargate-url:port/api';
+  private apiUrl = 'http://localhost:8080/api';
 
   constructor(private http: HttpClient) { }
 
